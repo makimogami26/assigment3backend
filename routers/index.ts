@@ -4,6 +4,7 @@ import IRoutes from "./IRoutes";
 import userRoute from "./userRoutes";
 import productRoute from "./productRoute";
 import ShopcartRoute from "./ShopcartRoute";
+import checkoutRoutes from "./checkoutRoutes";
 
 class Routes {
   router: Router;
@@ -14,6 +15,7 @@ class Routes {
     this.user();
     this.product();
     this.Shopcart();
+    this.Checkout();
   }
 
   public routes(): void {
@@ -34,6 +36,9 @@ class Routes {
   }
   public Shopcart(): void {
     this.router.use("/Shopcart", ShopcartRoute);
+  }
+  public Checkout(): void {
+    this.router.use("/checkout", checkoutRoutes);
   }
 }
 
