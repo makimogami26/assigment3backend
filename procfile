@@ -1,1 +1,1 @@
-web node db.ts
+web: npm start
