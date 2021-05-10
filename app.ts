@@ -3,6 +3,7 @@ import express from 'express'
 import Routes from './routers/index'
 import MongoDB from './configs/db'
 import dotenv from 'dotenv'
+import cors from 'cors'
 
 
 class App {
@@ -11,7 +12,11 @@ class App {
       this.app = express()
       this.plugin()
       this.route()
+      this.cors()
       dotenv.config()
+   }
+   protected cors():void{
+      this.app.use(cors())
    }
 
    protected plugin(): void{

@@ -7,13 +7,18 @@ var express_1 = __importDefault(require("express"));
 var index_1 = __importDefault(require("./routers/index"));
 var db_1 = __importDefault(require("./configs/db"));
 var dotenv_1 = __importDefault(require("dotenv"));
+var cors_1 = __importDefault(require("cors"));
 var App = /** @class */ (function () {
     function App() {
         this.app = express_1.default();
         this.plugin();
         this.route();
+        this.cors();
         dotenv_1.default.config();
     }
+    App.prototype.cors = function () {
+        this.app.use(cors_1.default());
+    };
     App.prototype.plugin = function () {
         this.app.use(express_1.default.urlencoded({ extended: true }));
         db_1.default();
