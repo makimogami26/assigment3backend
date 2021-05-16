@@ -50,7 +50,7 @@ var productController = /** @class */ (function () {
         };
         product_1.Product.create(newProduct)
             .then(function (createProduct) {
-            res.status(201).json({ msg: "product was created", data: createProduct });
+            res.status(201).json({ msg: "product berhasil dibuat", data: createProduct });
         })
             .catch(function (err) {
             res.status(500).json({ msg: err });

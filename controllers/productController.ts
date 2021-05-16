@@ -19,7 +19,7 @@ class productController {
     }
     Product.create(newProduct)
     .then((createProduct) => {
-      res.status(201).json({msg: "product was created", data:createProduct})
+      res.status(201).json({msg: "product berhasil dibuat", data:createProduct})
     })
     .catch((err) => {
       res.status(500).json({msg:err})

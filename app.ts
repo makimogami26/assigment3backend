@@ -20,9 +20,12 @@ class App {
    }
 
    protected plugin(): void{
+      this.app.use(express.json())
       this.app.use(express.urlencoded({extended: true}))
       MongoDB()
    }
+  
+
 
    protected route(): void{
       this.app.use(Routes)

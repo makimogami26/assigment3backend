@@ -67,15 +67,21 @@ var auth = /** @class */ (function () {
                             })];
                     case 2:
                         newUser = _b.sent();
-                        res.status(201).json({ msg: 'Succecc create your account', data: newUser });
+                        res
+                            .status(201)
+                            .json({ msg: "Succecc create your account", data: newUser });
                         return [3 /*break*/, 4];
                     case 3:
-                        res.status(500).json({ msg: 'Please input name, email and password' });
+                        res
+                            .status(500)
+                            .json({
+                            msg: "Gagal Register , Please input name, email and password",
+                        });
                         _b.label = 4;
                     case 4: return [3 /*break*/, 6];
                     case 5:
                         _a = _b.sent();
-                        res.status(500).json({ data: 'Error' });
+                        res.status(500).json({ data: "Error" });
                         return [3 /*break*/, 6];
                     case 6: return [2 /*return*/];
                 }
@@ -86,20 +92,36 @@ var auth = /** @class */ (function () {
         User_1.User.findOne({ email: req.body.email })
             .then(function (result) {
             if (!result) {
-                return res.status(401).json({ success: false, msg: 'Users with this email and password is wrong', });
+                return res
+                    .status(401)
+                    .json({
+                    success: false,
+                    msg: "Users with this email and password is wrong",
+                });
             }
             var passwordIsValid = bcrypt_1.default.compareSync(req.body.password, result.password);
             if (!passwordIsValid) {
-                return res.status(401).json({ success: false, msg: 'Users with this email and password is wrong', });
+                return res
+                    .status(401)
+                    .json({
+                    success: false,
+                    msg: "Gagal Login , Users with this email and password is wrong",
+                });
             }
             var secretKey = process.env.SECRET_KEY;
             var token = jsonwebtoken_1.default.sign({ id: result.id }, secretKey, {
-                expiresIn: '366hr',
+                expiresIn: "366hr",
             });
-            res.status(200).json({ msg: "Welcome " + result.nama + "..", data: result, accessToken: token });
+            res
+                .status(200)
+                .json({
+                msg: "Welcome " + result.nama + "..",
+                data: result,
+                accessToken: token,
+            });
         })
             .catch(function (err) {
-            res.status(500).json({ msg: 'Failed login', data: err });
+            res.status(500).json({ msg: "Failed login", data: err });
         });
     };
     return auth;

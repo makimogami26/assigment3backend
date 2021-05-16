@@ -114,7 +114,7 @@ var ShopcartController = /** @class */ (function () {
                         res
                             .status(200)
                             .json({
-                            message: "your product have been updated",
+                            message: "product berhasil di updated",
                             data: cartAndUpdate,
                         });
                         return [3 /*break*/, 7];

@@ -56,7 +56,7 @@ class ShopcartController {
       res
         .status(200)
         .json({
-          message: "your product have been updated",
+          message: "product berhasil di updated",
           data: cartAndUpdate,
         });
     } catch (error) {}
